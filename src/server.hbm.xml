@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="mill.database.table.Server" table="server">
+    <id column="id" name="id" type="integer">
+      <generator class="increment"/>
+    </id>
+    <property column="domain" length="100" name="domain" not-null="true" type="string" unique="true"/>
+    <property column="path" length="100" name="path" not-null="true" type="string" unique="false"/>
+    <property column="port" name="port" not-null="true" type="integer" unique="false"/>
+    <property column="https" name="https" not-null="true" type="boolean"/>
+    <property column="valid_cert" name="validCert" not-null="true" type="boolean"/>
+    <property column="visible" name="visible" not-null="true" type="boolean"/>
+  </class>
+</hibernate-mapping>

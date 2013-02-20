@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="mill.database.table.Play" table="play">
+    <id column="id" name="id" type="long">
+      <generator class="increment"/>
+    </id>
+    <property column="name" length="20" name="name" not-null="true" type="string" unique="false"/>
+    <property column="start" name="start" not-null="true" type="timestamp" unique="false"/>
+    <many-to-one class="mill.database.table.User" column="user" name="user" not-null="true" unique="false"/>
+    <many-to-one class="mill.database.table.Server" column="server" name="server" not-null="true" unique="false"/>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="mill.database.table.Log" table="log">
+    <id column="id" name="id" type="long">
+      <generator class="increment"/>
+    </id>
+    <property column="message" name="message" not-null="true" type="string" unique="false"/>
+    <property column="time" name="time" not-null="true" type="integer" unique="false"/>
+    <many-to-one class="mill.database.table.Play" column="play" name="play" not-null="true" unique="false"/>
+  </class>
+</hibernate-mapping>
