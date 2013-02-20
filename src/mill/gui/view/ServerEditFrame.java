@@ -35,6 +35,7 @@ public class ServerEditFrame extends ChildFrame {
     
     public ServerEditFrame(Controller controller, JFrame owner) {
         super(controller, owner);
+        setMinimumSize(getPreferredSize());
     }
     
     public void enableEditToolbar() {
@@ -272,6 +273,7 @@ public class ServerEditFrame extends ChildFrame {
             
         });
         tb.add(btAdd);
+        
         JButton btHelp = Core.createToolbarButton("help.png", "Példa");
         btHelp.addActionListener(new ActionListener() {
 
@@ -283,20 +285,11 @@ public class ServerEditFrame extends ChildFrame {
         });
         tb.add(btHelp);
         tb.addSeparator();
-        JPanel server = new JPanel(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-        c.anchor = c.LINE_START;
-        c.fill = c.HORIZONTAL;
         
-        tb.add(server);
-        c.weightx = 1; //emiatt nő a ComboBox hossza (ha az oprendszer támogatja) ...
         cbServers = new JComboBox();
         cbServers.setFocusable(false);
-        server.add(cbServers, c);
-        JToolBar tbS = new JToolBar();
-        tbS.setFloatable(false);
-        // ... de ha ide tenném, akkor nem nőne 
-        server.add(tbS, c);
+        tb.add(cbServers);
+        
         btEdit = Core.createToolbarButton("edit.png", "Szerver szerkesztése");
         btEdit.addActionListener(new ActionListener() {
 
@@ -306,7 +299,8 @@ public class ServerEditFrame extends ChildFrame {
             }
             
         });
-        tbS.add(btEdit);
+        tb.add(btEdit);
+        
         btDel = Core.createToolbarButton("delette.png", "Szerver törlése");
         btDel.addActionListener(new ActionListener() {
 
@@ -316,7 +310,7 @@ public class ServerEditFrame extends ChildFrame {
             }
             
         });
-        tbS.add(btDel);
+        tb.add(btDel);
     }
     
     private JPanel initUrlPanel() {

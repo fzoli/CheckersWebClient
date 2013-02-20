@@ -1,6 +1,7 @@
 package mill.gui.view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Event;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -37,6 +38,7 @@ public class ListFrame extends MainFrame {
     
     public ListFrame(Controller controller) {
         super(controller);
+        setMinimumSize(new Dimension(getPreferredSize().width, 0));
     }
 
     @Override
@@ -115,8 +117,9 @@ public class ListFrame extends MainFrame {
     
     private void initToolbar() {
         GridBagConstraints c = new GridBagConstraints();
-        c.weightx = 1;
         c.weighty = 1;
+        c.gridy = 1;
+        
         c.gridx = 1;
         JToolBar toolbar = new JToolBar();
         toolbar.setFloatable(false);
@@ -124,24 +127,24 @@ public class ListFrame extends MainFrame {
         toolbar.setBorder(Core.createToolbarBorder());
         add(toolbar, BorderLayout.PAGE_START);
         
-        JToolBar btPanel = new JToolBar();
-        btPanel.setFloatable(false);
-        
-        c.gridy = 1;
-        c.gridwidth = 0;
+        JToolBar tbPanel = new JToolBar();
+        tbPanel.setFloatable(false);
+        c.weightx = Integer.MAX_VALUE;
         c.anchor = c.LINE_START;
-        toolbar.add(btPanel, c);
+        c.fill = c.BOTH;
+        toolbar.add(tbPanel, c);
         btCreate = createToolbarButton("add.png", "Játszma létrehozása");
-        btPanel.add(btCreate);
-        btPanel.addSeparator();
+        tbPanel.add(btCreate);
+        tbPanel.addSeparator();
         btConnect = createToolbarButton("connect.png", "Játszmához kapcsolódás");
-        btPanel.add(btConnect);
+        tbPanel.add(btConnect);
         btReset = createToolbarButton("reset.png", "Játszma újraindítása");
-        btPanel.add(btReset);
+        tbPanel.add(btReset);
         btDel = createToolbarButton("delette.png", "Játszma törlése");
-        btPanel.add(btDel);
+        tbPanel.add(btDel);
         
         JPanel searchPanel = new JPanel();
+        searchPanel.setOpaque(false);
         JLabel lbSearch = new JLabel("Keresés: ");
         tfSearch = new JTextField(15);
         tfSearch.addActionListener(new ActionListener() {
@@ -154,10 +157,14 @@ public class ListFrame extends MainFrame {
         });
         searchPanel.add(lbSearch);
         searchPanel.add(tfSearch);
-        c.gridy = 1;
-        c.gridwidth = 1;
+        c.gridx = 2;
+        c.weightx = 1;
         c.anchor = c.LINE_END;
-        toolbar.add(searchPanel, c);
+        c.fill = c.VERTICAL;
+        JToolBar tbSearch = new JToolBar();
+        tbSearch.setFloatable(false);
+        tbSearch.add(searchPanel);
+        toolbar.add(tbSearch, c);
     }
     
     private JButton createToolbarButton(String icon, String tooltipText) {

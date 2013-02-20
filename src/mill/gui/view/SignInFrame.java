@@ -66,6 +66,7 @@ public class SignInFrame extends MainFrame {
         setTextFieldListener();
         setSignInButtonListener();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setMinimumSize(getPreferredSize());
     }
     
     public String getId() {
