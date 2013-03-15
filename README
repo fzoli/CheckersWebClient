@@ -1,0 +1,17 @@
+Magyar, online dámajáték (kliens alkalmazás)
+
+Az alkalmazás szerver oldali kódja itt található:
+https://github.com/fzoli/CheckersWebServer
+
+A szerverhez hasonlóan, szintén H2 adatbázisban tárolódnak a kliens oldali adatok,
+de a Hibernate API átkonfigurálásával a H2 lecserélhető más támogatott adatbázis szerverre.
+
+A kliens annyival tud többet a weboldalról elérhető verziónál, hogy támogatja a naplózást
+és a felhasználói adatokat is képes tárolni. (a jelszót hashként)
+
+A programnak több szerver is megadható, belépéskor kell kiválasztani,
+melyik szerverhez szeretne a felhasználó kapcsolódni.
+
+Kapcsolódás után megjelennek a létrehozott játszmák.
+Ha túl sok van belőlük, a jobb felső részen található bevitelő mezővel szűkíthető a lista,
+de a táblázat rendezhető is illetve az oszlopok tetszőlegesen felcserélhetőek.
